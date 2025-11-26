@@ -19,7 +19,11 @@ ENV PATH=$PATH:$JAVA_HOME/bin
 RUN wget https://dlcdn.apache.org/flink/flink-2.1.1/flink-2.1.1-bin-scala_2.12.tgz  &&\
     tar -xzvf flink-2.1.1-bin-scala_2.12.tgz &&\
     mv flink-2.1.1 flink &&\
-    rm flink-2.1.1-bin-scala_2.12.tgz
+    rm flink-2.1.1-bin-scala_2.12.tgz &&\
+    cd flink &&\
+    mkdir connector &&\
+    cd connector &&\
+    wget https://repo.maven.apache.org/maven2/org/apache/flink/flink-sql-connector-kafka/4.0.0-2.0/flink-sql-connector-kafka-4.0.0-2.0.jar
 
 RUN chmod -R 755 /workspace/flink
 ENV FLINK_HOME=/workspace/flink
