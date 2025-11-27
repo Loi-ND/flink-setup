@@ -72,7 +72,7 @@ taskmanager:
   #
   # To enable this, set the bind-host address to one that has access to an outside facing network
   # interface, such as 0.0.0.0.
-  bind-host: taskmanager
+  bind-host: 0.0.0.0
   # The address of the host on which the TaskManager runs and can be reached by the JobManager and
   # other TaskManagers. If not specified, the TaskManager will try different strategies to identify
   # the address.
@@ -82,7 +82,7 @@ taskmanager:
   #
   # Note also that unless all TaskManagers are running on the same machine, this address needs to be
   # configured separately for each TaskManager.
-  host: taskmanager
+  host: 0.0.0.0
   # The number of task slots that each TaskManager offers. Each slot runs one parallel pipeline.
   numberOfTaskSlots: 3
   memory:
@@ -171,7 +171,7 @@ parallelism:
 
 rest:
   # The address to which the REST client will connect to
-  address: localhost
+  address: 0.0.0.0
   # The address that the REST & web server binds to
   # By default, this is localhost, which prevents the REST & web server from
   # being able to communicate outside of the machine/container it is running on.

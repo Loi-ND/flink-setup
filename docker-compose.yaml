@@ -1,14 +1,15 @@
 services:
   jobmanager:
-    image: loind31/flink-base-img:v0
+    image: flink-base-img:v0
     ports:
       - "8081:8081"
     command: ["jobmanager.sh", "start-foreground"]  
     volumes:
-      - ./conf/jobmanager:/workspace/flink/conf
+        - ./src:/workspace/src
+        - ./conf/jobmanager:/workspace/flink/conf
 
   taskmanager:
-    image: loind31/flink-base-img:v0
+    image: flink-base-img:v0
     depends_on:
       - jobmanager
     command: ["taskmanager.sh", "start-foreground"]  
