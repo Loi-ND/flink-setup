@@ -7,7 +7,7 @@ services:
     volumes:
         - ./src:/workspace/src
         - ./conf/jobmanager:/workspace/flink/conf
-
+        - ./connectors:/workspace/flink/connectors
   taskmanager:
     image: loind31/flink-base-img:v0
     depends_on:
@@ -15,4 +15,5 @@ services:
     command: ["taskmanager.sh", "start-foreground"]  
     volumes:
       - ./conf/taskmanager:/workspace/flink/conf
+      - ./connectors:/workspace/flink/connectors
     scale: 3

@@ -8,14 +8,15 @@ RUN apt update && \
 
 WORKDIR /workspace
 
-COPY ./jdk-11.0.0.2 ./java
+COPY ./jdk ./java
 ENV JAVA_HOME=/workspace/java
 ENV PATH=$PATH:$JAVA_HOME/bin
 
 COPY ./flink ./flink
-RUN mkdir -p /workspace/flink/connector
-COPY ./flink-sql-connector-kafka-4.0.0-2.0.jar /workspace/flink/connector/flink-sql-connector-kafka-4.0.0-2.0.jar
+RUN mkdir /workspace/flink/connectors
 
 ENV FLINK_HOME=/workspace/flink
 ENV PATH=$PATH:$FLINK_HOME/bin
+ENV CLASSPATH=$CLASSPATH:/workspace/flink/connectors/*:.
+ENV CLASSPATH=$CLASSPATH:/workspace/flink/lib/*:.
 WORKDIR /workspace
